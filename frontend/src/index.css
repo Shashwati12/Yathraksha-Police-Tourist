@@ -1,1 +1,68 @@
 @import "tailwindcss";
+
+/* =========================
+   Design tokens (Tailwind v4)
+   ========================= */
+@theme {
+  /* Background / light tones */
+  --color-columbia: #CBEAF6;
+  --color-skyblue:  #87CEEB;
+  --color-white:    #FFFFFF;
+
+  /* Highlights / CTAs */
+  --color-teal:   #008080;
+  --color-orange: #FF8045;
+  --color-yellow: #FFE163;
+  --color-rojo:   #DF2A2A;
+
+  /* Neutral inks */
+  --color-ink:   #0F172A;
+  --color-slate: #334155;
+
+  /* Radius and shadows */
+  --radius-2xl: 1rem;
+  --shadow-soft: 0 6px 24px rgba(15,23,42,0.08);
+  --shadow-glass: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+/* =========================
+   Base app styling
+   ========================= */
+:root { --bg:#CBEAF6; --bg-soft:#E7F4FB; --card:#FFFFFF; }
+
+html,body,#root {
+  height: 100%;
+  background: linear-gradient(180deg, var(--bg) 0%, #E2F0F8 100%);
+  color: var(--color-ink);
+  font-family: 'Noto Sans','Roboto',system-ui,-apple-system,Segoe UI,Arial,sans-serif;
+}
+
+/* Accessibility */
+.focus-ring:focus-visible { outline: 3px solid var(--color-teal); outline-offset: 2px; }
+
+/* Glass panel */
+.glass {
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-glass);
+}
+
+/* =========================
+   Component utilities
+   ========================= */
+.btn-primary { @apply bg-teal text-white hover:brightness-110 focus-visible:outline-4 rounded-xl px-4 py-2 transition transform hover:-translate-y-0.5; }
+.btn-warn    { @apply bg-orange text-white hover:brightness-110 rounded-xl px-4 py-2 transition; }
+.btn-danger  { @apply bg-rojo text-white hover:brightness-110 rounded-xl px-4 py-2 transition; }
+.badge       { @apply text-xs font-semibold px-2 py-1 rounded-lg; }
+
+/* Table styles */
+.table { @apply w-full text-sm; }
+.table th { @apply text-left text-slate font-semibold py-2; }
+.table td { @apply py-2; }
+.table tr:nth-child(even) { background-color: #EAF6FD; }
+
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
